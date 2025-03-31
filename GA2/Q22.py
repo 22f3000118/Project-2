@@ -41,7 +41,7 @@ def compress_an_image(image_file, parameter):
                 buffer.seek(0)
                 base64_image = base64.b64encode(buffer.read()).decode('utf-8')
                 
-                image_uri = f"data:{parameter["content_type"]};base64,{base64_image}"
+                image_uri = f'data:{parameter["content_type"]};base64:{base64_image}'
                 return image_uri
 
         # If PNG with palette didn't work, try more aggressive options while preserving dimensions
