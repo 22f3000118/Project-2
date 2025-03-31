@@ -53,5 +53,5 @@ def execute(question: str, parameter, file_bytes = None):
     img_str = base64.b64encode(buffered.getvalue()).decode()
 
     # Create Base64 URI
-    image_uri = f"data:{parameter["content_type"]};base64,{img_str}"
+    image_uri = f'data:{parameter["content_type"]};base64,{img_str}'
     return image_uri
