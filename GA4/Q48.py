@@ -1,4 +1,5 @@
 import os, json, requests
+from dotenv import load_dotenv
 
 def execute(question: str, parameter):
         print(f"File Name: {os.path.basename(__file__)[0]}")
@@ -6,6 +7,7 @@ def execute(question: str, parameter):
         return run_git_workflow(parameter["email"])
         
 def run_git_workflow(email):
+    load_dotenv()
 
     # GitHub repository details
     GITHUB_OWNER = "23f2004837"  # Replace with your GitHub username/org
@@ -14,7 +16,7 @@ def run_git_workflow(email):
     BRANCH = "main"  # Branch to run the workflow on
 
     # Personal Access Token (PAT) with `repo` scope
-    GITHUB_TOKEN = "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"  # Replace with your actual token
+    GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
     # GitHub API endpoint
     url = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/actions/workflows/{WORKFLOW_FILE}/dispatches"

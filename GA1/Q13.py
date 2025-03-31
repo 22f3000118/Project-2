@@ -1,5 +1,6 @@
 import os, json, requests
 import urllib
+from dotenv import load_dotenv
 
 def execute(question: str, parameter):
     #return "https://raw.githubusercontent.com/23f2004837/GA1/refs/heads/main/email.json"
@@ -9,14 +10,16 @@ def execute(question: str, parameter):
 
 def run_git_workflow(email):
 
+    load_dotenv()
+
     # GitHub repository details
-    GITHUB_OWNER = "23f2004837"  # Replace with your GitHub username/org
+    GITHUB_OWNER = "23f3000118"  # Replace with your GitHub username/org
     GITHUB_REPO = "daily-commit"   # Replace with your repo name
     WORKFLOW_FILE = "email.yml"  # Name of your workflow file
     BRANCH = "main"  # Branch to run the workflow on
 
     # Personal Access Token (PAT) with `repo` scope
-    GITHUB_TOKEN = "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"  # Replace with your actual token
+    GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
     # GitHub API endpoint
     url = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/actions/workflows/{WORKFLOW_FILE}/dispatches"
