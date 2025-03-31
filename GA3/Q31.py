@@ -1,4 +1,8 @@
 import os, json, re
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv('API_KEY')
 
 def execute(question: str, parameter):
     generated_code = generate_sentiment_analysis_code(question)
@@ -20,7 +24,7 @@ def generate_sentiment_analysis_code(question):
     def analyze_sentiment():
         url = "https://api.openai.com/v1/chat/completions"
         headers = {{
-            "Authorization": "Bearer dummy_api_key",
+            "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json"
         }}
         data = {{

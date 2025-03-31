@@ -1,7 +1,9 @@
 import os, json, numpy as np, httpx
+from dotenv import load_dotenv
 from request_context import current_request_var
 
-api_key = "Io4hBJXa8XEOT6cUwFHa2RcPhVLjCF8zfQBLTl3e_q2XJlI10N-P_m72gA" 
+load_dotenv()
+api_key = os.getenv('API_KEY') 
 
 def execute(question: str, parameter):
     request = current_request_var.get()

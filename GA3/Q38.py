@@ -1,6 +1,7 @@
 import os, json
 from request_context import current_request_var
 from openai import OpenAI
+from dotenv import load_dotenv
 
 def execute(question: str, parameter):
     request = request = current_request_var.get()
@@ -78,8 +79,8 @@ function_definitions = [
     }
 ]
 
-
-your_api_key = "2NsEK91rAoRkHdYvCqvzT3BlbkFJsjU12SaEqybowZlDIo4hBJXa8XEOT6cUwFHa2RcPhVLjCF8zfQBLTl3e_q2XJlI10N-P_m72gA" 
+load_dotenv()
+your_api_key = os.getenv('API_KEY') 
 client = OpenAI(api_key=your_api_key)
 
 def parse_llm_task(q: str):
