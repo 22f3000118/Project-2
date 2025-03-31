@@ -18,7 +18,6 @@ def run_git_workflow(email):
     WORKFLOW_FILE = "email.yml"  # Name of your workflow file
     BRANCH = "main"  # Branch to run the workflow on
 
-    # Personal Access Token (PAT) with `repo` scope
     GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
     # GitHub API endpoint
